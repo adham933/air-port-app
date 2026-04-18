@@ -1,0 +1,19 @@
+<h1>Airport System</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<a href="/add">Add Flight</a> |
+<a href="/flights">View Flights</a> |
+<a href="/takeoff">Takeoff Queue</a>
+
+<hr>
+
+<h2>Flights</h2>
+<ul>
+{% for f in flights %}
+    <li>
+        {{f.flight_id}} - {{f.destination}} - {{f.time}}
+        ({{f.booked}}/{{f.capacity}})
+        <a href="/book/{{f.flight_id}}">Book</a>
+        <a href="/cancel/{{f.flight_id}}">Cancel</a>
+    </li>
+{% endfor %}
+</ul>

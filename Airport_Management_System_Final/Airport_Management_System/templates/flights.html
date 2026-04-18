@@ -1,0 +1,23 @@
+<h1>Flights List</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<ul>
+{% for f in flights %}
+    <li>
+        {{f.flight_id}} - {{f.destination}} - {{f.time}}
+        ({{f.booked}}/{{f.capacity}})
+        <a href="/book/{{f.flight_id}}">Book</a>
+        <a href="/cancel/{{f.flight_id}}">Cancel</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% if taken_off %}
+<h2>Takeoff Queue Processed</h2>
+<ul>
+{% for t in taken_off %}
+    <li>{{t}} took off</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<a href="/">Back</a>
